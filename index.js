@@ -37,16 +37,30 @@ function deleteListItem() {
 
 }
 
-//setup ability to check off list item
+
+
+//setup ability to check and uncheck list item
 function checkListItem() {
     //setup function to run when list item check button is pressed
     $('ul').on('click', '.shopping-item-toggle', function (event) {
-      //check list item by changing corresponding items class so check-through appears via css
+    //uncheck list item if its class name determines it is checked
+    if ($(this).closest('li').find('.shopping-item').attr('class') === 'shopping-item shopping-item__checked') {
+
+      $(this).closest('li').find('.shopping-item').removeClass('shopping-item shopping-item__checked').addClass('shopping-item');
+
+    }
+    else {
+      //check list item
       $(this).closest('li').find('.shopping-item').toggleClass('shopping-item__checked', true);
         
-    })
-
+    }
+  })
 }
+
+
+
+
+
 
 $(deleteListItem);
 $(addToList);
